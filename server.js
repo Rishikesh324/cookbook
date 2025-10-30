@@ -63,7 +63,7 @@ async function initDB() {
 
 // ✅ Home route (optional)
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "signup.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // ✅ SIGNUP Route
@@ -125,3 +125,4 @@ app.get("/index", (req, res) => res.sendFile(path.join(__dirname, "public", "ind
 initDB().then(() => {
   app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
 });
+
