@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cook Book - Sign Up</title>
+  <style>
+    /* Reset some defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(0deg, black, #4CAF50);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .signup-container h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .signup-container p {
+      margin-bottom: 1.5rem;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .signup-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .signup-container input {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .signup-container input:focus {
+      border-color: #ff9900;
+      outline: none;
+      box-shadow: 0 0 6px rgba(255, 153, 0, 0.4);
+    }
+
+    .signup-container button {
+      padding: 0.9rem;
+      background: black;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .signup-container button:hover {
+      background: #4CAF50;
+      color: black;
+    }
+
+    .signup-container .login-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .signup-container .login-link a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .signup-container .login-link a:hover {
+      text-decoration: underline;
+    }
+    /* ===== RESPONSIVE FIX ===== */
+    @media (max-width: 1024px) {
+      body {
+        font-size: 90%;
+      }
+
+      header .logo {
+        font-size: 28px;
+      }
+
+      .hero-text h1, h1 {
+        font-size: 26px !important;
+      }
+
+      .hero-text p {
+        font-size: 16px !important;
+      }
+
+      .feature-box, .recipe-card, .contact-container {
+        width: 90% !important;
+        margin: 10px auto !important;
+      }
+
+      .recipe-columns {
+        flex-direction: column !important;
+      }
+
+      .story-content, .team-container {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Cook Book</h1>
+    <p>Create your account to start your recipe journey 🍴</p>
+
+    <form id="signupForm">
+      <input type="text" name="fullname" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <script>
+      document.getElementById("signupForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const fullname = e.target.fullname.value.trim();
+        const email = e.target.email.value.trim();
+        const password = e.target.password.value;
+        const confirmPassword = e.target["confirm-password"].value;
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          return;
+        }
+        try {
+          const res = await fetch("http://localhost:3000/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ fullname, email, password })
+          });
+
+          const data = await res.json();
+          alert(data.message || "Response received");
+
+          if (res.ok) {
+            // go to login page after successful sign up
+            window.location.href = "login.html";
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Error connecting to server. Make sure server is running.");
+        }
+      });
+    </script>
+    
+    <div class="login-link">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
+  </div>
+</body>
+</html>

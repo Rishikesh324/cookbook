@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CookBook - Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: #4CAF50;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: black;
+      color: #4CAF50;
+    }
+
+    header .logo {
+      font-family: "Magneto", serif;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    header nav ul li a:hover {
+      color: #4CAF50;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 60px 20px;
+      background: white;
+      color: #4CAF50;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text button {
+      padding: 12px 25px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hero-text button:hover {
+      background-color: darkgreen;
+    }
+
+    .hero-img img {
+      width: 300px;
+    }
+
+    /* Back button */
+    #backBtn {
+      display: none;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      padding: 8px 15px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    #backBtn:hover {
+      background: #ddd;
+    }
+
+    /* Features */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+      flex-wrap: wrap;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .feature-box h3 {
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    .feature-box:hover {
+      transform: scale(1.05);
+    }
+
+    /* Search */
+    .search {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .search input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .search button {
+      padding: 10px 15px;
+      border: none;
+      background: white;
+      color: black;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    /* Popular Recipes */
+    .popular {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .recipe-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .recipe-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .recipe-card:hover {
+      transform: scale(1.05);
+    }
+
+    .recipe-card img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    /* Recipe Display */
+    #recipeDisplay {
+      display: none;
+      background: white;
+      margin: 40px auto;
+      padding: 25px 30px;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      font-family: 'Times New Roman', Times, serif;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    #recipeDisplay h2 {
+      color: #4CAF50;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .recipe-columns {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .recipe-columns > div {
+      flex: 1 1 300px;
+    }
+
+    #recipeDisplay h3 {
+      color: #2E7D32;
+      font-size: 22px;
+      margin: 15px 0 10px 0;
+    }
+
+    #recipeDisplay ul, #recipeDisplay ol {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    #recipeDisplay li {
+      margin-bottom: 8px;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f1f1f1;
+    }
+
+    .testimonial-box {
+      background: white;
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 400px;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: black;
+      color: white;
+    }
+
+    footer .social-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer .social-links a:hover {
+      color: #4CAF50;
+    }
+    /* ===== RESPONSIVE FIX ===== */
+    @media (max-width: 1024px) {
+      body {
+        font-size: 90%;
+      }
+
+      header .logo {
+        font-size: 28px;
+      }
+
+      .hero-text h1, h1 {
+        font-size: 26px !important;
+      }
+
+      .hero-text p {
+        font-size: 16px !important;
+      }
+
+      .feature-box, .recipe-card, .contact-container {
+        width: 90% !important;
+        margin: 10px auto !important;
+      }
+
+      .recipe-columns {
+        flex-direction: column !important;
+      }
+
+      .story-content, .team-container {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="mainHeader">
+    <div class="logo">CookBook</div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="allrecipes.html">Recipes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Back Button -->
+  <button id="backBtn" onclick="goBack()">← Back</button>
+
+  <!-- Hero Section -->
+  <section class="hero" id="heroSection">
+    <div class="hero-text">
+      <h1>Cook Your Favorite Dishes</h1>
+      <p>Discover amazing recipes and learn step-by-step how to make them at home.</p>
+      <button onclick="window.location.href='signup.html'">SignUp for free</button>
+    </div>
+    <div class="hero-img">
+      <img src="cookbooklogo.jpg" alt="Cooking Illustration">
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="featuresSection">
+    <div class="feature-box">
+      <h3>Quick Recipes</h3>
+      <p>Find simple and fast recipes for busy days.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Healthy Choices</h3>
+      <p>Explore nutritious meals for a healthy lifestyle.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Desserts & More</h3>
+      <p>Indulge in sweet treats and snacks anytime.</p>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="search" id="searchSection">
+    <h2>Find Your Recipe</h2>
+    <br>
+    <input type="text" id="searchInput" placeholder="Search for a dish...">
+    <button onclick="searchRecipe()">Search</button>
+  </section>
+
+  <!-- Recipe Display -->
+  <div id="recipeDisplay"></div>
+
+  <!-- Popular Recipes Section -->
+  <section class="popular" id="popularSection">
+    <h2>Popular Recipes</h2>
+    <div class="recipe-grid" id="popularGrid">
+      <div class="recipe-card" onclick="showRecipe('paneer butter masala')">
+        <img src="paneerbuttermasala.png" alt="Recipe">
+        <h4>Paneer Butter Masala</h4>
+      </div>
+      <div class="recipe-card" onclick="showRecipe('shawarma')">
+        <img src="shawarma.png" alt="Recipe">
+        <h4>Shawarma</h4>
+      </div>
+      <div class="recipe-card" onclick="showRecipe('choco cake')">
+        <img src="chococake.png" alt="Recipe">
+        <h4>Choco Cake</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonialsSection">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-box">
+      <p>"CookBook made cooking so easy! I love the step-by-step guides."</p>
+      <span>- Priya Sharma</span>
+    </div>
+    <div class="testimonial-box">
+      <p>"I learned so many new recipes. Great resource for beginners!"</p>
+      <span>- Rahul Verma</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="mainFooter">
+    <p>&copy; 2025 CookBook | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">YouTube</a>
+    </div>
+  </footer>
+
+  <script>
+    const recipes = {
+      "bombay chutney": {
+        displayName: "Bombay Chutney",
+        ingredients: [
+          "2 tbsp oil", "1 tsp mustard seeds", "1 medium onion (finely chopped)",
+          "2 medium tomatoes (chopped)", "2 green chilies (slit)",
+          "1/2 tsp turmeric powder", "1 tsp red chili powder",
+          "1/2 cup besan (gram flour)", "2 cups water", "Salt to taste",
+          "Fresh coriander leaves (for garnish)"
+        ],
+        steps: [
+          "Heat oil in a pan on medium flame. Once hot, add mustard seeds and let them splutter.",
+          "Add chopped onions and slit green chilies. Sauté until onions turn golden brown.",
+          "Add chopped tomatoes, turmeric powder, and red chili powder. Cook until tomatoes turn soft and mushy.",
+          "Mix besan with water to make a smooth batter. Pour into pan slowly while stirring.",
+          "Cook until chutney thickens (7-8 minutes).",
+          "Add salt, garnish with coriander leaves, and serve hot."
+        ]
+      },
+      "paneer butter masala": {
+        displayName: "Paneer Butter Masala",
+        ingredients: [
+          "200g paneer (cubed)", "2 tbsp butter", "1 tbsp oil",
+          "1 large onion (finely chopped)", "2 medium tomatoes (pureed)",
+          "1 tbsp ginger-garlic paste", "1 tsp red chili powder",
+          "1 tsp garam masala", "1/2 cup fresh cream", "Salt to taste",
+          "Fresh coriander leaves"
+        ],
+        steps: [
+          "Heat butter and oil in a pan. Sauté onions until golden.",
+          "Add ginger-garlic paste. Cook until raw smell disappears.",
+          "Add tomato puree and cook until oil separates.",
+          "Add chili powder, garam masala, and salt. Stir well.",
+          "Add paneer cubes and coat with gravy.",
+          "Add cream, simmer 5 minutes, garnish with coriander."
+        ]
+      },
+      "shawarma": {
+        displayName: "Shawarma",
+        ingredients: [
+          "2 pita breads", "200g grilled & shredded chicken",
+          "2 tbsp mayonnaise", "1 tbsp chili sauce", "1 medium onion (sliced)",
+          "1 cucumber (sliced)", "Few lettuce leaves", "Salt & pepper"
+        ],
+        steps: [
+          "Warm pita bread slightly on a pan or oven.",
+          "Mix mayonnaise and chili sauce to make dressing.",
+          "Place lettuce in pita. Add chicken, onion, cucumber.",
+          "Sprinkle salt & pepper. Drizzle mayo-chili sauce.",
+          "Roll tightly, cut into halves, serve warm."
+        ]
+      },
+      "choco cake": {
+        displayName: "Choco Cake",
+        ingredients: [
+          "1 cup all-purpose flour", "1/2 cup cocoa powder", "1 cup sugar",
+          "1/2 cup butter (softened)", "2 eggs", "1/2 cup milk",
+          "1 tsp baking powder", "1 tsp vanilla essence"
+        ],
+        steps: [
+          "Preheat oven to 180°C. Grease and dust cake tin.",
+          "Mix flour, cocoa, baking powder. Set aside.",
+          "Beat butter and sugar until creamy. Add eggs one by one.",
+          "Add vanilla essence. Fold in dry ingredients with milk alternately.",
+          "Pour batter into tin, bake 30–35 minutes.",
+          "Cool completely before slicing. Serve plain or with frosting."
+        ]
+      },
+      "gobi manchuria": {
+        displayName: "Gobi Manchuria",
+        ingredients: [
+          "1 medium cauliflower (cut into florets)",
+          "1 cup cornflour",
+          "2 tbsp maida (all-purpose flour)",
+          "1 tsp ginger-garlic paste",
+          "2 green chilies (chopped)",
+          "1 medium onion (sliced)",
+          "2 tbsp soy sauce",
+          "2 tbsp red chili sauce",
+          "1 tbsp tomato ketchup",
+          "Salt and pepper to taste",
+          "Oil for deep frying",
+          "Spring onions (for garnish)"
+        ],
+        steps: [
+          "Boil water with a little salt. Blanch cauliflower florets in it for 2–3 minutes, then drain completely.",
+          "Prepare a thick batter by mixing cornflour, maida, salt, pepper, ginger-garlic paste, and little water.",
+          "Dip cauliflower florets in the batter and deep fry in hot oil until crisp and golden. Set aside on tissue paper.",
+          "For the sauce, heat 2 tbsp oil in a wok. Add chopped green chilies and sliced onion. Stir fry on high flame for 2 minutes.",
+          "Add soy sauce, chili sauce, and tomato ketchup. Mix well and adjust seasoning.",
+          "Add the fried cauliflower florets into the sauce and toss until well coated.",
+          "Garnish with chopped spring onions and serve hot as a starter or side dish."
+        ]
+      },
+      "mixed fruit juice": {
+        displayName: "Mixed Fruit Juice",
+        ingredients: [
+          "1 cup apple (chopped)",
+          "1 cup pineapple (chopped)",
+          "1 cup watermelon (deseeded & chopped)",
+          "1 ripe banana",
+          "1 tsp lemon juice",
+          "1 tsp sugar (optional, adjust as per sweetness)",
+          "Ice cubes"
+        ],
+        steps: [
+          "Wash and chop all the fruits into small cubes for easy blending.",
+          "Add apple, pineapple, watermelon, and banana into a blender jar.",
+          "Add lemon juice, sugar (if using), and a few ice cubes.",
+          "Blend everything until smooth. If too thick, add little chilled water and blend again.",
+          "Pour into glasses and serve immediately for freshness."
+        ]
+      },
+      "fruit salad": {
+        displayName: "Fruit Salad",
+        ingredients: [
+          "1 apple (chopped)",
+          "1 banana (sliced)",
+          "1 cup papaya (diced)",
+          "1/2 cup pineapple chunks",
+          "1/2 cup grapes",
+          "1 orange (peeled and segmented)",
+          "2 tbsp honey or sugar syrup",
+          "1/2 tsp lemon juice",
+          "A pinch of black salt (optional)",
+          "A few mint leaves (for garnish)"
+        ],
+        steps: [
+          "Wash and peel all fruits as needed, then chop them into small bite-sized pieces.",
+          "In a large mixing bowl, combine all the fruits: apple, banana, papaya, pineapple, grapes, and orange.",
+          "Add honey (or sugar syrup) and lemon juice. Toss gently to mix without crushing the fruits.",
+          "Sprinkle a pinch of black salt for a slight tangy flavor if desired.",
+          "Refrigerate for 15–20 minutes before serving to enhance freshness.",
+          "Garnish with fresh mint leaves and serve chilled."
+        ]
+      },
+      "veg fried rice": {
+        displayName: "Vegetable Fried Rice",
+        ingredients: [
+          "2 cups cooked rice (preferably chilled)",
+          "2 tbsp oil",
+          "1 medium onion (finely chopped)",
+          "1 carrot (diced)",
+          "1/2 cup beans (chopped)",
+          "1/4 cup green peas",
+          "1 small capsicum (chopped)",
+          "2 tbsp soy sauce",
+          "1 tbsp chili sauce (optional)",
+          "1 tbsp vinegar",
+          "Salt to taste",
+          "1/2 tsp black pepper powder",
+          "Spring onions (for garnish)"
+        ],
+        steps: [
+          "Heat oil in a large wok or pan over medium-high flame.",
+          "Add chopped onions and sauté for 1–2 minutes until translucent.",
+          "Add carrots, beans, peas, and capsicum. Stir-fry on high flame for 3–4 minutes until vegetables are slightly tender yet crisp.",
+          "Add soy sauce, chili sauce, and vinegar. Mix well.",
+          "Add the cooked rice and toss gently to coat evenly with the sauces.",
+          "Season with salt and black pepper. Stir-fry for another 2–3 minutes on high flame.",
+          "Garnish with chopped spring onions and serve hot."
+        ]
+      },
+      "pav bhaji": {
+        displayName: "Pav Bhaji",
+        ingredients: [
+          "4 pav buns",
+          "3 medium potatoes (boiled and mashed)",
+          "1/2 cup green peas (boiled)",
+          "1/2 cup cauliflower (chopped)",
+          "1/2 cup carrots (chopped)",
+          "1 large onion (finely chopped)",
+          "2 medium tomatoes (finely chopped)",
+          "1 green capsicum (chopped)",
+          "2 tbsp butter (plus extra for toasting pav)",
+          "1 tbsp pav bhaji masala",
+          "1 tsp red chili powder",
+          "1 tsp ginger-garlic paste",
+          "1/4 tsp turmeric powder",
+          "Salt to taste",
+          "1 tbsp lemon juice",
+          "Fresh coriander leaves (for garnish)"
+       ],
+       steps: [
+          "Boil potatoes, peas, cauliflower, and carrots until soft. Mash them coarsely and keep aside.",
+          "Heat butter in a large pan or tawa. Add chopped onions and sauté until golden brown.",
+          "Add ginger-garlic paste and cook for a minute until the raw smell disappears.",
+          "Add chopped tomatoes and capsicum. Cook until tomatoes turn soft and mushy.",
+          "Add turmeric, red chili powder, and pav bhaji masala. Mix well.",
+          "Add the mashed vegetables along with a little water to get a thick gravy consistency. Mash and mix thoroughly while cooking.",
+          "Add salt to taste and cook on medium flame for 5–7 minutes, stirring occasionally.",
+          "Add lemon juice and mix well. Garnish with fresh coriander leaves and a dollop of butter.",
+          "Slice the pav buns and toast them on a tawa with butter until golden brown.",
+          "Serve the hot bhaji with butter-toasted pav, chopped onions, and lemon wedges."
+        ]
+      },
+    };
+
+    function searchRecipe() {
+      let input = document.getElementById("searchInput").value.trim().toLowerCase();
+      let foundKey = null;
+      if (recipes[input]) foundKey = input;
+      else {
+        for (let key in recipes) {
+          if (key.includes(input)) { foundKey = key; break; }
+        }
+      }
+      if (foundKey) showRecipe(foundKey);
+      else {
+        document.getElementById("recipeDisplay").style.display = "block";
+        document.getElementById("recipeDisplay").innerHTML = "<h2>Recipe not found!</h2>";
+      }
+    }
+
+    function showRecipe(name) {
+      let key = name.toLowerCase();
+      let recipe = recipes[key];
+      if (recipe) {
+        let display = `
+          <h2>${recipe.displayName}</h2>
+          <div class="recipe-columns">
+            <div>
+              <h3>Ingredients:</h3>
+              <ul>${recipe.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+            </div>
+            <div>
+              <h3>Steps:</h3>
+              <ol>${recipe.steps.map(s => `<li>${s}</li>`).join("")}</ol>
+            </div>
+          </div>
+        `;
+        document.getElementById("recipeDisplay").style.display = "block";
+        document.getElementById("recipeDisplay").innerHTML = display;
+      }
+    }
+
+    // Show all recipes when "Get Started" clicked
+    function showAllRecipes() {
+      document.getElementById("heroSection").style.display = "none";
+      document.getElementById("featuresSection").style.display = "none";
+      document.getElementById("searchSection").style.display = "none";
+      document.getElementById("popularSection").style.display = "none";
+      document.getElementById("testimonialsSection").style.display = "none";
+      document.getElementById("mainFooter").style.display = "none";
+      document.getElementById("mainHeader").style.display = "none";
+
+      let allRecipesHtml = "<h2 style='text-align:center;color:#4CAF50;margin-bottom:20px;'>All Recipes</h2><div class='recipe-grid'>";
+      for (let key in recipes) {
+        allRecipesHtml += `
+          <div class="recipe-card" onclick="showRecipe('${key}')">
+            <img src="${recipes[key].displayName.replace(/ /g,'')}.png" alt="Recipe">
+            <h4>${recipes[key].displayName}</h4>
+          </div>
+        `;
+      }
+      allRecipesHtml += "</div>";
+
+      document.getElementById("recipeDisplay").style.display = "block";
+      document.getElementById("recipeDisplay").innerHTML = allRecipesHtml;
+
+      document.getElementById("backBtn").style.display = "block";
+    }
+
+    // Go back to homepage
+    function goBack() {
+      document.getElementById("heroSection").style.display = "flex";
+      document.getElementById("featuresSection").style.display = "flex";
+      document.getElementById("searchSection").style.display = "block";
+      document.getElementById("popularSection").style.display = "block";
+      document.getElementById("testimonialsSection").style.display = "block";
+      document.getElementById("mainFooter").style.display = "block";
+      document.getElementById("mainHeader").style.display = "flex";
+      document.getElementById("recipeDisplay").style.display = "none";
+      document.getElementById("backBtn").style.display = "none";
+    }
+
+    // Search with Enter key
+    document.getElementById("searchInput").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") { event.preventDefault(); searchRecipe(); }
+    });
+  </script>
+</body>
+</html>

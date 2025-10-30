@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CookBook - Contact Us</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: #f8f8f8;
+      color: #333;
+    }
+
+    /* ===== Header ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: black;
+      color: #4CAF50;
+    }
+
+    header .logo {
+      font-family: "Magneto", serif;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #4CAF50;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact-container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-container h1 {
+      text-align: center;
+      color: #4CAF50;
+      margin-bottom: 20px;
+      font-size: 36px;
+    }
+
+    .contact-container p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .contact-info {
+      line-height: 1.8;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .contact-info strong {
+      color: #4CAF50;
+    }
+
+    .contact-section {
+      margin-bottom: 20px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: black;
+      color: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer .social-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer .social-links a:hover {
+      color: #4CAF50;
+    }
+    /* ===== RESPONSIVE FIX ===== */
+    @media (max-width: 1024px) {
+      body {
+        font-size: 90%;
+      }
+
+      header .logo {
+        font-size: 28px;
+      }
+
+      .hero-text h1, h1 {
+        font-size: 26px !important;
+      }
+
+      .hero-text p {
+        font-size: 16px !important;
+      }
+
+      .feature-box, .recipe-card, .contact-container {
+        width: 90% !important;
+        margin: 10px auto !important;
+      }
+
+      .recipe-columns {
+        flex-direction: column !important;
+      }
+
+      .story-content, .team-container {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">CookBook</div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="allrecipes.html">Recipes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you! Reach out to our CookBook team for any queries or suggestions.</p>
+
+    <div class="contact-info">
+      <div class="contact-section">
+        <strong>Email:</strong> cookbook@gmail.co.in
+      </div>
+      <div class="contact-section">
+        <strong>Customer Care:</strong> +91 1111 222 333
+      </div>
+      <div class="contact-section">
+        <strong>Office Address:</strong><br>
+        CookBook Pvt. Ltd.<br>
+        3rd Floor, Foodie Tech Park,<br>
+        Anna Nagar, Chennai - 600040, Tamil Nadu, India
+      </div>
+      <div class="contact-section">
+        <strong>Working Hours:</strong> Monday – Saturday: 9:00 AM – 7:00 PM
+      </div>
+      <div class="contact-section">
+        <strong>Follow Us:</strong> 
+        <a href="#" style="color:#4CAF50;">Facebook</a> |
+        <a href="#" style="color:#4CAF50;">Instagram</a> |
+        <a href="#" style="color:#4CAF50;">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 CookBook | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">YouTube</a>
+    </div>
+  </footer>
+
+</body>
+</html>

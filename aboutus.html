@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - CookBook</title>
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: black;
+      color: #4CAF50;
+    }
+
+    .logo {
+      font-family: "Magneto", serif;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #4CAF50;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+        background: #fff;
+        color: #333;
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .hero-text {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .hero h1 {
+        color: #4CAF50;
+        font-size: 36px;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+
+    /* ===== MISSION ===== */
+    .mission {
+      max-width: 900px;
+      margin: 80px auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .mission h2 {
+      color: #4CAF50;
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .mission p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* ===== OUR STORY ===== */
+    .story {
+      background: #f8f8f8;
+      padding: 80px 20px;
+    }
+
+    .story-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .story-content img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .story-content div {
+      flex: 1;
+    }
+
+    .story-content h2 {
+      color: #4CAF50;
+      margin-bottom: 15px;
+      font-size: 30px;
+    }
+
+    /* ===== TEAM SECTION ===== */
+    .team {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .team h2 {
+      color: #4CAF50;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .team-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .team-member {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 250px;
+      transition: transform 0.3s;
+    }
+
+    .team-member img {
+      width: 100%;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .team-member h3 {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .team-member p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: black;
+      color: white;
+    }
+
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .story-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .story-content img {
+        max-width: 100%;
+      }
+    }
+    /* ===== RESPONSIVE FIX ===== */
+    @media (max-width: 1024px) {
+      body {
+        font-size: 90%;
+      }
+
+      header .logo {
+        font-size: 28px;
+      }
+
+      .hero-text h1, h1 {
+        font-size: 26px !important;
+      }
+
+      .hero-text p {
+        font-size: 16px !important;
+      }
+
+      .feature-box, .recipe-card, .contact-container {
+        width: 90% !important;
+        margin: 10px auto !important;
+      }
+
+      .recipe-columns {
+        flex-direction: column !important;
+      }
+
+      .story-content, .team-container {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">CookBook</div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="aboutus.html" class="active">About</a></li>
+        <li><a href="allrecipes.html">Recipes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>About CookBook</h1>
+      <p>Your one-stop destination for authentic Indian recipes crafted with love and tradition.</p>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission">
+    <h2>Our Mission</h2>
+    <p>
+      At <strong>CookBook</strong>, our mission is to bring traditional and modern Indian recipes together on one platform,
+      helping food lovers explore, learn, and enjoy the art of cooking. We aim to inspire every home chef to create delicious
+      meals using locally available ingredients.
+    </p>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="story">
+    <div class="story-content">
+      <img src="ourstory.png" alt="Our Story" />
+      <div>
+        <h2>Our Story</h2>
+        <p>
+          CookBook started as a small idea among food enthusiasts who believed that cooking is not just a task — it’s a celebration.
+          What began as a few handwritten recipes shared among friends has now grown into a vibrant online community of foodies.
+        </p>
+        <p>
+          From street food delights to royal festive dishes, CookBook brings every taste of India to your kitchen. Our team works
+          tirelessly to ensure that each recipe is authentic, tested, and easy to follow.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="https://source.unsplash.com/200x200/?chef,woman" alt="Team Member 1" />
+        <h3>N. Rishikesh Reddy</h3>
+        <p>Head Chef & Recipe Curator</p>
+      </div>
+      <div class="team-member">
+        <img src="https://source.unsplash.com/200x200/?chef,man" alt="Team Member 2" />
+        <h3>S. Giridharan</h3>
+        <p>Content Writer</p>
+      </div>
+      <div class="team-member">
+        <img src="https://source.unsplash.com/200x200/?blogger,woman" alt="Team Member 3" />
+        <h3>P. Hemanth Kumar</h3>
+        <p>Food Photographer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 CookBook | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a> | 
+      <a href="#">YouTube</a>
+    </div>
+  </footer>
+
+</body>
+</html>
