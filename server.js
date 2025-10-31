@@ -118,10 +118,13 @@ app.get("/index", (req, res) => res.sendFile(path.join(__dirname, "public", "ind
 
 // ------------------- START SERVER -------------------
 initDB().then(() => {
-  app.listen(process.env.PORT || 3000, "0.0.0.0", () => {
-    console.log(`🚀 Server running on port ${process.env.PORT || 3000}`);
+  const port = process.env.PORT || 3000;
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`🚀 Server running on http://0.0.0.0:${port}`);
   });
 });
+
+
 
 
 
